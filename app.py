@@ -312,16 +312,20 @@ elif menu == "Busque grupos por característica":
 
     # Interface do Streamlit
     opcao = st.selectbox("Escolha a característica do grupo:", list(descricao_para_clusters.keys()))
+    clusters_escolhidos = descricao_para_clusters[opcao]
 
+    lista_clusteres = []
+    for i in clusters_escolhidos:
+      l = i-1
+      lista_clusteres.append(l)
+      
     if opcao:
-        clusters_escolhidos = descricao_para_clusters[opcao]
-        resultados = original_scaled[original_scaled['cluster'].isin(clusters_escolhidos)]
+        resultados = original_scaled[original_scaled['cluster'].isin(lista_clusteres)]
         lista = resultados['ID'].tolist()
       
         st.write(f"Grupos correspondentes: {clusters_escolhidos}")
         st.write("IDs dos clientes encontrados:")
         st.dataframe(pd.DataFrame(sorted(lista), columns=['ID']))
-
 
 
 elif menu == "Busque um cliente por ID":
