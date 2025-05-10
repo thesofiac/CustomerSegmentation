@@ -282,14 +282,33 @@ if menu == "Entenda os dados":
     st.markdown("<div style='text-align: justify'><h5>Distribuição e agrupamento dos dados após tratamento: <br><br></h5></div>", unsafe_allow_html=True)
 
     # Métricas
-    silhouette = silhouette_score(df_antes, labels)
-    davies = davies_bouldin_score(df_antes, labels)
+    silhouette = silhouette_score(df_antes, treated_labels)
+    davies = davies_bouldin_score(df_antes, treated_labels)
     st.write(f"Métricas para k = 8")
     st.write(f"Silhouette Score: {silhouette:.4f}")
     st.write(f"Davies-Bouldin Score: {davies:.4f}")
   
     # Visualizar clusters com PCA em 3D
     df_pca_3d = PCA(n_components=3).fit_transform(df_antes)
+    fig = px.scatter_3d(
+      df_pca_3d,
+      x='PCA1', y='PCA2', z='PCA3',
+      color='Cluster',
+      title="Visualização dos Clusters com PCA (3D)",
+      opacity=0.7
+    )
+
+    st.plotly_chart(fig)
+
+    # Métricas
+    silhouette = silhouette_score(df_depois, original_labels)
+    davies = davies_bouldin_score(df_depois, original_labels)
+    st.write(f"Métricas para k = 8")
+    st.write(f"Silhouette Score: {silhouette:.4f}")
+    st.write(f"Davies-Bouldin Score: {davies:.4f}")
+  
+    # Visualizar clusters com PCA em 3D
+    df_pca_3d = PCA(n_components=3).fit_transform(df_depois)
     fig = px.scatter_3d(
       df_pca_3d,
       x='PCA1', y='PCA2', z='PCA3',
