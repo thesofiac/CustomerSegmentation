@@ -302,7 +302,7 @@ if menu == "Entenda os dados":
 
     # DataFrame com colunas nomeadas e os labels
     df_plot = pd.DataFrame(df_pca_3d, columns=['PC1', 'PC2', 'PC3'])
-    df_plot['cluster'] = original_labels  # isso assume que original_labels já está definido
+    df_plot['cluster'] = original_labels.astype(str)
 
     # Gráfico 3D com escala de vermelho
     fig = px.scatter_3d(
