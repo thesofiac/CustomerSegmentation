@@ -354,9 +354,9 @@ elif menu == "Busque por um grupo":
     
     # Mostrar resultado
     if cluster_number in descricao_clusters:
-        st.success(descricao_clusters[cluster_number])
+      st.success(descricao_clusters[cluster_number])
     else:
-    st.warning("Escolha um número entre 1 e 8.")
+      st.warning("Escolha um número entre 1 e 8.")
 
 elif menu == "Entenda a escolha do modelo":
     st.subheader("Entenda a escolha do modelo")
