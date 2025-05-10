@@ -266,7 +266,7 @@ if menu == "Entenda os dados":
     df_pca_3d = PCA(n_components=3).fit_transform(df_antes)
     fig = px.scatter_3d(
       df_pca_3d,
-      x='PCA1', y='PCA2', z='PCA3',
+      x=0, y=1, z=2,
       color='Cluster',
       title="Visualização dos Clusters com PCA (3D)",
       opacity=0.7
@@ -287,7 +287,7 @@ if menu == "Entenda os dados":
     df_pca_3d = PCA(n_components=3).fit_transform(df_depois)
     fig = px.scatter_3d(
       df_pca_3d,
-      x='PCA1', y='PCA2', z='PCA3',
+      x=0, y=1, z=2,
       color='Cluster',
       title="Visualização dos Clusters com PCA (3D)",
       opacity=0.7
