@@ -255,18 +255,22 @@ if menu == "Entenda os dados":
     st.markdown("""
     <div style='text-align: justify'>
       <h5>
-        Neste projeto, temos por 
-        <span style='color:#E57373;'>agrupar os clientes</span> de um supermercado, conforme seus 
+        Neste projeto,
+        <span style='color:#E57373;'>agrupamos os clientes</span> de um supermercado, conforme seus 
         <span style='color:#E57373;'>padrões de compra</span>, 
         <span style='color:#E57373;'>características familiares</span> e de 
-        <span style='color:#E57373;'>renda</span>. Temos por objetivo selecionar quais clientes são mais suscetíveis a responder positivamente a determinadas 
-        <span style='color:#E57373;'>estratégias de marketing</span> e 
-        <span style='color:#E57373;'>venda</span>. Isso é de interesse geral em empresas já que, 
+        <span style='color:#E57373;'>renda</span>.<br><br> Temos por objetivo selecionar quais
+        <span style='color:#E57373;'>clientes são suscetíveis</span> a responder positivamente a determinadas 
+        <span style='color:#E57373;'>estratégias de marketing</span> e venda.<br><br>Isso é de interesse geral em empresas já que, 
         <span style='color:#E57373;'>direcionar campanhas de marketing impróprias</span> aos clientes 
-        <span style='color:#E57373;'>leva a custos sem o retorno</span> esperado.
+        <span style='color:#E57373;'>leva a custos sem retorno</span> satisfatório.
         <br><br>
-        Para alcançarmos esse objetivo, foi utilizado o método de clusterização kmeans, aplicando escalas maiores em features consideradas mais importantes para os objetos propostos. A metodologia aplicada permitiu que os dados, que eram inicialmente muito próximos uns dos outros no espaço n-dimensional, se agrupassem como resposta a maior escala das features selecionadas.
-        <br><br>
+        Para alcançarmos esse objetivo, foi utilizado o método de clusterização
+        <span style='color:#E57373;'>kmeans</span>, aplicando escalas maiores
+        <span style='color:#E57373;'>em features consideradas mais importantes</span> para os objetos propostos. A metodologia aplicada permitiu que os dados, que antes eram muito próximos uns dos outros no espaço n-dimensional,
+        <span style='color:#E57373;'>se agrupassem<\span> como resposta a maior escala das features selecionadas.<br><br>
+        Antes da metodologia aplicada, o valor do <i>silhouette score<\i> encontrado para os grupos <span style='color:#E57373;'>era de 0.01<\span>, <span style='color:#E57373;'>passando a 0.48<\span> após a metodologia.
+        E o <i>Davies-Bouldin score<\i> passou de <span style='color:#E57373;'>1.96 a 0.90<\span>.
       </h5>
     </div>
     """, unsafe_allow_html=True)
