@@ -226,7 +226,7 @@ dic_marital_status = {
         'Viúvo' : 'Widow'
         }
 
-dic_rel_exp = {
+dic_binary = {
         'Sim' : '1' ,
         'Não' : '0'
         }
