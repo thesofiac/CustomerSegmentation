@@ -299,7 +299,7 @@ elif menu == "Preveja a qual grupo um cliente pertence":
         treated_input_df, ids = treat_columns(input_df)
         input_df_scaled = scale_columns(treated_input_df)
 
-        input_label = pipeline_loaded.predict(input_df_scaled)
+        input_label = pipeline.predict(input_df_scaled)
         label = int(input_label) + 1
         input_df['cluster'] = input_label
         input_df['ID'] = ids
