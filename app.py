@@ -268,9 +268,9 @@ if menu == "Entenda os dados":
         Para alcançarmos esse objetivo, foi utilizado o método de clusterização
         <span style='color:#E57373;'>kmeans</span>, aplicando escalas maiores
         <span style='color:#E57373;'>em features consideradas mais importantes</span> para os objetos propostos. A metodologia aplicada permitiu que os dados, que antes eram muito próximos uns dos outros no espaço n-dimensional,
-        <span style='color:#E57373;'>se agrupassem<\span> como resposta a maior escala das features selecionadas.<br><br>
-        Antes da metodologia aplicada, o valor do <i>silhouette score<\i> encontrado para os grupos <span style='color:#E57373;'>era de 0.01<\span>, <span style='color:#E57373;'>passando a 0.48<\span> após a metodologia.
-        E o <i>Davies-Bouldin score<\i> passou de <span style='color:#E57373;'>1.96 a 0.90<\span>.
+        <span style='color:#E57373;'>se agrupassem</span> como resposta a maior escala das features selecionadas.<br><br>
+        Antes da metodologia aplicada, o valor do <i>silhouette score</i> encontrado para os grupos <span style='color:#E57373;'>era de 0.01</span>, <span style='color:#E57373;'>passando a 0.48</span> após a metodologia.
+        E o <i>Davies-Bouldin score</i> passou de <span style='color:#E57373;'>1.96 a 0.90</span>.
       </h5>
     </div>
     """, unsafe_allow_html=True)
