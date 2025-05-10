@@ -281,6 +281,14 @@ if menu == "Entenda os dados":
     </div>
     """, unsafe_allow_html=True)
 
+    red_scale = [
+    "#7f0000",
+    "#b30000",
+    "#d7301f",
+    "#ef6548",
+    "#fc8d59"
+    ]
+
     st.markdown("<div style='text-align: justify'><h5>Distribuição e agrupamento dos dados <span style='color:#E57373;'>antes</span> do tratamento: <br><br></h5></div>", unsafe_allow_html=True)
 
     # PCA
@@ -296,7 +304,7 @@ if menu == "Entenda os dados":
       x='PC1', y='PC2', z='PC3',
       color='cluster',
       opacity=0.7,
-      color_discrete_sequence=px.colors.sequential.Reds
+      color_discrete_sequence=red_scale
     )
 
     st.plotly_chart(fig)
@@ -316,7 +324,7 @@ if menu == "Entenda os dados":
       x='PC1', y='PC2', z='PC3',
       color='cluster',
       opacity=0.7,
-      color_discrete_sequence=px.colors.sequential.Reds
+      color_discrete_sequence=red_scale
     )
 
     st.plotly_chart(fig)
