@@ -185,7 +185,7 @@ original_df = pd.read_csv('marketing_campaign.csv', sep='\t')
 original_treated, ids = treat_columns(original_df)
 original_scaled = scale_columns(original_treated)
 
-original_labels = pipeline_loaded.predict(original_scaled)
+original_labels = pipeline.predict(original_scaled)
 original_scaled['cluster'] = original_labels
 original_scaled['ID'] = ids
 
