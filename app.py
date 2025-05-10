@@ -270,12 +270,12 @@ if menu == "Entenda os dados":
       </h5>
     </div>
     """, unsafe_allow_html=True)
-
-st.markdown("""
-<div style='text-align: justify'>
+  
+    st.markdown("""
+    <div style='text-align: justify'>
     <h5>Distribuição e agrupamento dos dados antes do tratamento: <br><br></h5>
-</div>
-""", unsafe_allow_html=True)
+    </div>
+    """, unsafe_allow_html=True)
 
     st.markdown("<div style='text-align: justify'><h5>Distribuição e agrupamento dos dados antes do tratamento: <br><br></h5></div>", unsafe_allow_html=True)
 
