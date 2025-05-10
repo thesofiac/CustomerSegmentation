@@ -316,7 +316,6 @@ elif menu == "Preveja a qual grupo um cliente pertence":
 
         st.write(f"O grupo ao qual o cliente pertence é: grupo {label}")
         texto_explicativo = descricao_clusters.get(label, "Descrição não disponível para este grupo.")
-        st.markdown(f"Características do grupo {label}: ")
         st.write(texto_explicativo)
 
 
