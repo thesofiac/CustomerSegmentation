@@ -289,7 +289,6 @@ if menu == "Entenda os dados":
       df_pca_3d,
       x=0, y=1, z=2,
       color=2,
-      title="Visualização dos Clusters com PCA (3D)",
       opacity=0.7,
       color_discrete_sequence=px.colors.sequential.Reds
     )
@@ -298,13 +297,30 @@ if menu == "Entenda os dados":
   
     st.markdown("<div style='text-align: justify'><h5>Distribuição e agrupamento dos dados <span style='color:#E57373;'>após</span> tratamento: <br><br></h5></div>", unsafe_allow_html=True)
   
+    # PCA
+    df_pca_3d = PCA(n_components=3).fit_transform(df_depois)
+
+    # DataFrame com colunas nomeadas e os labels
+    df_plot = pd.DataFrame(df_pca_3d, columns=['PC1', 'PC2', 'PC3'])
+    df_plot['cluster'] = original_labels  # isso assume que original_labels já está definido
+
+    # Gráfico 3D com escala de vermelho
+    fig = px.scatter_3d(
+      df_plot,
+      x='PC1', y='PC2', z='PC3',
+      color='cluster',
+      opacity=0.7,
+      color_discrete_sequence=px.colors.sequential.Reds
+    )
+
+st.plotly_chart(fig)
+
     # Visualizar clusters com PCA em 3D
     df_pca_3d = PCA(n_components=3).fit_transform(df_depois)
     fig = px.scatter_3d(
       df_pca_3d,
       x=0, y=1, z=2,
       color=original_labels,
-      title="Visualização dos Clusters com PCA (3D)",
       opacity=0.7,
       color_discrete_sequence=px.colors.sequential.Reds
     )
