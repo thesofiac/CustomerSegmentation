@@ -191,6 +191,8 @@ pipeline = joblib.load('kmeans_pipeline.pkl')
 original_df = pd.read_csv('marketing_campaign.csv', sep='\t')
 original_treated, ids = treat_columns(original_df, is_original=True)
 original_scaled = scale_columns(original_treated)
+df_antes = original_treated.copy()
+df_depois = original_scaled.copy()
 
 treated_labels = pipeline.predict(original_treated)
 original_treated['cluster'] = treated_labels
@@ -279,20 +281,15 @@ if menu == "Entenda os dados":
 
     st.markdown("<div style='text-align: justify'><h5>Distribuição e agrupamento dos dados após tratamento: <br><br></h5></div>", unsafe_allow_html=True)
 
-    # Métricas de avaliação
-    silhouette = silhouette_score(original_treated.drop(columns=['cluster']), original_scaled['cluster'])
-    davies = davies_bouldin_score(original_treated.drop(columns=['cluster']), original_scaled['cluster'])
-
-    st.subheader("Métricas para k = 8")
-    st.write(f"**Silhouette Score:** {silhouette:.2f}")
-    st.write(f"**Davies-Bouldin Score:** {davies:.2f}")
-
-    # PCA 3D
-    pca_3d = PCA(n_components=3).fit_transform(original_scaled.drop(columns=['cluster']))
-    df_pca_3d = pd.DataFrame(pca_3d, columns=['PCA1', 'PCA2', 'PCA3'])
-    df_pca_3d['Cluster'] = original_scaled['cluster'].astype(str)
-
-    # Gráfico interativo
+    # Métricas
+    silhouette = silhouette_score(df_antes, labels)
+    davies = davies_bouldin_score(df_antes, labels)
+    st.write(f"Métricas para k = 8")
+    st.write(f"Silhouette Score: {silhouette:.4f}")
+    st.write(f"Davies-Bouldin Score: {davies:.4f}")
+  
+    # Visualizar clusters com PCA em 3D
+    df_pca_3d = PCA(n_components=3).fit_transform(df_antes)
     fig = px.scatter_3d(
       df_pca_3d,
       x='PCA1', y='PCA2', z='PCA3',
