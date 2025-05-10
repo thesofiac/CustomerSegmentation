@@ -320,7 +320,7 @@ elif menu == "Busque grupos por característica":
       
         st.write(f"Grupos correspondentes: {clusters_escolhidos}")
         st.write("IDs dos clientes encontrados:")
-        st.writ(lista)
+        st.write(lista)
 
 
 elif menu == "Busque um cliente por ID":
