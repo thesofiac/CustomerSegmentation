@@ -316,7 +316,7 @@ elif menu == "Busque grupos por característica":
     if opcao:
         clusters_escolhidos = descricao_para_clusters[opcao]
         resultados = original_scaled[original_scaled['cluster'].isin(clusters_escolhidos)]
-        lista = df['ID'].tolist()
+        lista = resultados['ID'].tolist()
       
         st.write(f"Grupos correspondentes: {clusters_escolhidos}")
         st.write("IDs dos clientes encontrados:")
