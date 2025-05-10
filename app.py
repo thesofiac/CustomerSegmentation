@@ -4,8 +4,9 @@ import numpy as np
 import streamlit as st
 import matplotlib.pyplot as plt
 
-def treat_columns(df):
-  df = df.dropna()
+def treat_columns(df, is_original=False):
+  if is_original:
+    df = df.dropna()
 
   # If buys on campaign
   df['Buys_on_campaign'] = df['AcceptedCmp1'] + df['AcceptedCmp2'] + df['AcceptedCmp3'] + df['AcceptedCmp4'] + df['AcceptedCmp5'] + df['Response']
@@ -182,7 +183,7 @@ pipeline = joblib.load('kmeans_pipeline.pkl')
 
 # Clusterizar dados originais
 original_df = pd.read_csv('marketing_campaign.csv', sep='\t')
-original_treated, ids = treat_columns(original_df)
+original_treated, ids = treat_columns(original_df, is_original=True)
 original_scaled = scale_columns(original_treated)
 
 original_labels = pipeline.predict(original_scaled)
@@ -296,7 +297,7 @@ elif menu == "Preveja a qual grupo um cliente pertence":
     if st.button("Prever"):
         input_df = pd.DataFrame([[int(f1), int(f2), dic_scholarity[f3], dic_marital[f4], float(f5), int(f6), int(f7), str(f8), int(f9), int(f10), int(f11), int(f12), int(f13), int(f14), int(f15), int(f16), int(f17), int(f18), int(f19), int(f20), int(dic_binary[f21]), int(dic_binary[f22]), int(dic_binary[f23]), int(dic_binary[f24]), int(dic_binary[f25]), int(dic_binary[f27]), int(f28), int(f29), int(dic_binary[f26])]], columns=['ID', 'Year_Birth', 'Education', 'Marital_Status', 'Income', 'Kidhome', 'Teenhome', 'Dt_Customer', 'Recency', 'MntWines', 'MntFruits', 'MntMeatProducts', 'MntFishProducts', 'MntSweetProducts', 'MntGoldProds', 'NumDealsPurchases', 'NumWebPurchases', 'NumCatalogPurchases', 'NumStorePurchases', 'NumWebVisitsMonth', 'AcceptedCmp3', 'AcceptedCmp4', 'AcceptedCmp5', 'AcceptedCmp1', 'AcceptedCmp2', 'Complain', 'Z_CostContact', 'Z_Revenue', 'Response'])
 
-        treated_input_df, ids = treat_columns(input_df)
+        treated_input_df, ids = treat_columns(input_df, is_original=False)
         input_df_scaled = scale_columns(treated_input_df)
 
         input_label = pipeline.predict(input_df_scaled)
