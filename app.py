@@ -311,11 +311,11 @@ elif menu == "Preveja a qual grupo um cliente pertence":
 
         input_label = pipeline.predict(input_df_scaled)
         label = int(input_label) + 1
-        input_df['cluster'] = input_label
+        input_df['cluster'] = label
         input_df['ID'] = ids
 
         st.write(f"O grupo ao qual o cliente pertence é: grupo {label}")
-        texto_explicativo = descricao_clusters.get(cluster, "Descrição não disponível para este grupo.")
+        texto_explicativo = descricao_clusters.get(label, "Descrição não disponível para este grupo.")
         st.markdown(f"Características do grupo {label}: ")
         st.write(texto_explicativo)
 
