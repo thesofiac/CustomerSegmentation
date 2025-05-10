@@ -256,14 +256,14 @@ if menu == "Entenda os dados":
     <div style='text-align: justify'>
       <h5>
         Neste projeto, temos por 
-        <span style='color:#69C1FF;'>agrupar os clientes</span> de um supermercado, conforme seus 
-        <span style='color:#69C1FF;'>padrões de compra</span>, 
-        <span style='color:#69C1FF;'>características familiares</span> e de 
-        <span style='color:#69C1FF;'>renda</span>. Temos por objetivo selecionar quais clientes são mais suscetíveis a responder positivamente a determinadas 
-        <span style='color:#69C1FF;'>estratégias de marketing</span> e 
-        <span style='color:#69C1FF;'>venda</span>. Isso é de interesse geral em empresas já que, 
-        <span style='color:#69C1FF;'>direcionar campanhas de marketing impróprias</span> aos clientes 
-        <span style='color:#69C1FF;'>leva a custos sem o retorno</span> esperado.
+        <span style='color:#E57373;'>agrupar os clientes</span> de um supermercado, conforme seus 
+        <span style='color:#E57373;'>padrões de compra</span>, 
+        <span style='color:#E57373;'>características familiares</span> e de 
+        <span style='color:#E57373;'>renda</span>. Temos por objetivo selecionar quais clientes são mais suscetíveis a responder positivamente a determinadas 
+        <span style='color:#E57373;'>estratégias de marketing</span> e 
+        <span style='color:#E57373;'>venda</span>. Isso é de interesse geral em empresas já que, 
+        <span style='color:#E57373;'>direcionar campanhas de marketing impróprias</span> aos clientes 
+        <span style='color:#E57373;'>leva a custos sem o retorno</span> esperado.
         <br><br>
         Para alcançarmos esse objetivo, foi utilizado o método de clusterização kmeans, aplicando escalas maiores em features consideradas mais importantes para os objetos propostos. A metodologia aplicada permitiu que os dados, que eram inicialmente muito próximos uns dos outros no espaço n-dimensional, se agrupassem como resposta a maior escala das features selecionadas.
         <br><br>
@@ -294,7 +294,7 @@ if menu == "Entenda os dados":
       color=2,
       title="Visualização dos Clusters com PCA (3D)",
       opacity=0.7,
-      color_discrete_sequence=px.colors.qualitative.Prism
+      color_discrete_sequence=px.colors.sequential.Reds
     )
 
     st.plotly_chart(fig)
@@ -316,7 +316,7 @@ if menu == "Entenda os dados":
       color=original_labels,
       title="Visualização dos Clusters com PCA (3D)",
       opacity=0.7,
-      color_discrete_sequence=px.colors.qualitative.Prism
+      color_discrete_sequence=px.colors.sequential.Reds
     )
 
     st.plotly_chart(fig)
