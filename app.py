@@ -292,8 +292,8 @@ elif menu == "Preveja a qual grupo um cliente pertence":
         input_df['ID'] = ids
 
         st.write(f"O grupo ao qual o cliente pertence é: grupo {label}")
-        texto_explicativo = descricao_clusters.get(cluster, "Descrição não disponível para este cluster.")
-        st.markdown(f"Características do cluster {label}: ")
+        texto_explicativo = descricao_clusters.get(cluster, "Descrição não disponível para este grupo.")
+        st.markdown(f"Características do grupo {label}: ")
         st.write(texto_explicativo)
 
 
@@ -320,7 +320,8 @@ elif menu == "Busque grupos por característica":
       
         st.write(f"Grupos correspondentes: {clusters_escolhidos}")
         st.write("IDs dos clientes encontrados:")
-        st.write(lista)
+        st.dataframe(pd.DataFrame(sorted(lista), columns=['ID']))
+
 
 
 elif menu == "Busque um cliente por ID":
