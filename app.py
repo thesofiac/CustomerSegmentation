@@ -282,13 +282,19 @@ if menu == "Entenda os dados":
     """, unsafe_allow_html=True)
 
     st.markdown("<div style='text-align: justify'><h5>Distribuição e agrupamento dos dados <span style='color:#E57373;'>antes</span> do tratamento: <br><br></h5></div>", unsafe_allow_html=True)
-  
-    # Visualizar clusters com PCA em 3D
+
+    # PCA
     df_pca_3d = PCA(n_components=3).fit_transform(df_antes)
+
+    # DataFrame com colunas nomeadas e os labels
+    df_plot = pd.DataFrame(df_pca_3d, columns=['PC1', 'PC2', 'PC3'])
+    df_plot['cluster'] = treated_labels.astype(str)
+
+    # Gráfico 3D com escala de vermelho
     fig = px.scatter_3d(
-      df_pca_3d,
-      x=0, y=1, z=2,
-      color=2,
+      df_plot,
+      x='PC1', y='PC2', z='PC3',
+      color='cluster',
       opacity=0.7,
       color_discrete_sequence=px.colors.sequential.Reds
     )
@@ -314,18 +320,7 @@ if menu == "Entenda os dados":
     )
 
     st.plotly_chart(fig)
-
-    # Visualizar clusters com PCA em 3D
-    df_pca_3d = PCA(n_components=3).fit_transform(df_depois)
-    fig = px.scatter_3d(
-      df_pca_3d,
-      x=0, y=1, z=2,
-      color=original_labels,
-      opacity=0.7,
-      color_discrete_sequence=px.colors.sequential.Reds
-    )
-
-    st.plotly_chart(fig)
+  
 
 elif menu == "Busque os dados de um grupo":
     # Título
