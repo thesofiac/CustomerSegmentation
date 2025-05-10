@@ -267,7 +267,7 @@ if menu == "Entenda os dados":
     fig = px.scatter_3d(
       df_pca_3d,
       x=0, y=1, z=2,
-      color='Cluster',
+      color=2,
       title="Visualização dos Clusters com PCA (3D)",
       opacity=0.7
     )
@@ -288,7 +288,7 @@ if menu == "Entenda os dados":
     fig = px.scatter_3d(
       df_pca_3d,
       x=0, y=1, z=2,
-      color='Cluster',
+      color=2,
       title="Visualização dos Clusters com PCA (3D)",
       opacity=0.7
     )
