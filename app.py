@@ -3,6 +3,9 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 import matplotlib.pyplot as plt
+import plotly.express as px
+from sklearn.metrics import silhouette_score, davies_bouldin_score
+from sklearn.decomposition import PCA
 
 def treat_columns(df, is_original=False):
   if is_original:
