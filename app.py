@@ -189,6 +189,10 @@ original_df = pd.read_csv('marketing_campaign.csv', sep='\t')
 original_treated, ids = treat_columns(original_df, is_original=True)
 original_scaled = scale_columns(original_treated)
 
+treated_labels = pipeline.predict(original_treated)
+original_treated['cluster'] = treated_labels
+original_treated['ID'] = ids
+
 original_labels = pipeline.predict(original_scaled)
 original_scaled['cluster'] = original_labels
 original_scaled['ID'] = ids
@@ -243,7 +247,59 @@ if menu == "Entenda os dados":
     st.subheader("Entenda os dados")
     st.markdown("<br>", unsafe_allow_html=True)
 
-    st.markdown("<div style='text-align: justify'><h5>Neste projeto, temos por objetivo determinar se um candidato a uma vaga de cientista de dados será propenso a trocar de emprego após realizar o treinamento oferecido pela empresa ou não. Como é do interesse das empresas evitar a contratação de candidatos que as deixarão após o treinamento, podemos tratar esse problema como um caso de Classificação Binária. Ou seja, um caso em que o <i>target</i> é classificatório e binário do tipo False (não deixará a empresa) e True (deixará a empresa). Para que seja determinada a probabilidade do candidato estar interessado em mudar de emprego, foram analisados dados de gênero, formação e experiência profissional, assim como dados das vagas e empresas que estes profissionais ocupavam no momento da coleta de dados.</h5></div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align: justify'><h5>Neste projeto, temos por agrupar os clientes de um supermercado, conforme seus padrões de compra, características familiares e de renda. Temos por objetivo selecionar, do banco de dados geral de clientes, aqueles com os quais determinadas estratégias de marketing e venda melhor funcionarão. Isso é de interesse geral em empresas já que, direcionar campanhas de marketing impróprias aos clientes leva a custos sem o retorno esperado. <br><br> Para alcançarmos esse objetivo, foi utilizado o método de clusterização kmeans, aplicando escalas maiores em features consideradas mais importantes para os objetos propostos. A metodologia aplicada permitiu que os dados, que eram inicialmente muito próximos uns dos outros no espaço n-dimensional, se agrupassem como resposta a maior escala das features selecionadas. <br><br></h5></div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align: justify'><h5>Distribuição e agrupamento dos dados antes do tratamento: <br><br></h5></div>", unsafe_allow_html=True)
+    original_scaled
+
+    # Métricas de avaliação
+    silhouette = silhouette_score(original_treated.drop(columns=['cluster']), original_treated['cluster'])
+    davies = davies_bouldin_score(original_treated.drop(columns=['cluster']), original_treated['cluster'])
+
+    st.subheader("Métricas para k = 8")
+    st.write(f"**Silhouette Score:** {silhouette:.2f}")
+    st.write(f"**Davies-Bouldin Score:** {davies:.2f}")
+
+    # PCA 3D
+    pca_3d = PCA(n_components=3).fit_transform(original_treated.drop(columns=['cluster']))
+    df_pca_3d = pd.DataFrame(pca_3d, columns=['PCA1', 'PCA2', 'PCA3'])
+    df_pca_3d['Cluster'] = original_treated['cluster'].astype(str)
+
+    # Gráfico interativo
+    fig = px.scatter_3d(
+      df_pca_3d,
+      x='PCA1', y='PCA2', z='PCA3',
+      color='Cluster',
+      title="Visualização dos Clusters com PCA (3D)",
+      opacity=0.7
+    )
+
+    st.plotly_chart(fig)
+
+    st.markdown("<div style='text-align: justify'><h5>Distribuição e agrupamento dos dados após tratamento: <br><br></h5></div>", unsafe_allow_html=True)
+
+    # Métricas de avaliação
+    silhouette = silhouette_score(original_treated.drop(columns=['cluster']), original_scaled['cluster'])
+    davies = davies_bouldin_score(original_treated.drop(columns=['cluster']), original_scaled['cluster'])
+
+    st.subheader("Métricas para k = 8")
+    st.write(f"**Silhouette Score:** {silhouette:.2f}")
+    st.write(f"**Davies-Bouldin Score:** {davies:.2f}")
+
+    # PCA 3D
+    pca_3d = PCA(n_components=3).fit_transform(original_scaled.drop(columns=['cluster']))
+    df_pca_3d = pd.DataFrame(pca_3d, columns=['PCA1', 'PCA2', 'PCA3'])
+    df_pca_3d['Cluster'] = original_scaled['cluster'].astype(str)
+
+    # Gráfico interativo
+    fig = px.scatter_3d(
+      df_pca_3d,
+      x='PCA1', y='PCA2', z='PCA3',
+      color='Cluster',
+      title="Visualização dos Clusters com PCA (3D)",
+      opacity=0.7
+    )
+
+    st.plotly_chart(fig)
 
 elif menu == "Busque os dados de um grupo":
     # Título
