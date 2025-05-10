@@ -313,7 +313,7 @@ if menu == "Entenda os dados":
       color_discrete_sequence=px.colors.sequential.Reds
     )
 
-st.plotly_chart(fig)
+    st.plotly_chart(fig)
 
     # Visualizar clusters com PCA em 3D
     df_pca_3d = PCA(n_components=3).fit_transform(df_depois)
