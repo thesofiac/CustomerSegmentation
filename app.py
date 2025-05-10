@@ -357,9 +357,6 @@ elif menu == "Busque um cliente por ID":
     # Entrada do usuário
     id_cliente = st.number_input("Digite o ID do cliente:", min_value=0, step=1)
 
-    # Input do usuário
-    id_cliente = st.number_input("Digite o ID do cliente:", min_value=0, step=1)
-
     if id_cliente in original_scaled['ID'].values:
         cluster = df_final[original_scaled['ID'] == id_cliente]['cluster'].iloc[0]
         st.success(f"O cliente {id_cliente} pertence ao cluster {cluster}")
