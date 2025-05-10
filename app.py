@@ -294,22 +294,26 @@ elif menu == "Preveja a qual grupo um cliente pertence":
     f28 = '0'  # Z_cost
     f29 = '0'  # Z_revenue
 
-    if st.button("Prever"):
+    if int(f16) > int(f17) + int(f18) + int(f19):
+      st.write("O número de compras com desconto não pode ser maior que o número de compras total")
+    elif int(f17) + int(f18) + int(f19) == 0:
+      st.write("Essa pessoa nunca fez compras em nossa loja")
+    else st.button("Prever"):
         input_df = pd.DataFrame([[int(f1), int(f2), dic_scholarity[f3], dic_marital[f4], float(f5), int(f6), int(f7), str(f8), int(f9), int(f10), int(f11), int(f12), int(f13), int(f14), int(f15), int(f16), int(f17), int(f18), int(f19), int(f20), int(dic_binary[f21]), int(dic_binary[f22]), int(dic_binary[f23]), int(dic_binary[f24]), int(dic_binary[f25]), int(dic_binary[f27]), int(f28), int(f29), int(dic_binary[f26])]], columns=['ID', 'Year_Birth', 'Education', 'Marital_Status', 'Income', 'Kidhome', 'Teenhome', 'Dt_Customer', 'Recency', 'MntWines', 'MntFruits', 'MntMeatProducts', 'MntFishProducts', 'MntSweetProducts', 'MntGoldProds', 'NumDealsPurchases', 'NumWebPurchases', 'NumCatalogPurchases', 'NumStorePurchases', 'NumWebVisitsMonth', 'AcceptedCmp3', 'AcceptedCmp4', 'AcceptedCmp5', 'AcceptedCmp1', 'AcceptedCmp2', 'Complain', 'Z_CostContact', 'Z_Revenue', 'Response'])
       
         treated_input_df, ids = treat_columns(input_df, is_original=False)
         st.dataframe(pd.DataFrame(treated_input_df))
-        #input_df_scaled = scale_columns(treated_input_df)
+        input_df_scaled = scale_columns(treated_input_df)
 
-        #input_label = pipeline.predict(input_df_scaled)
-        #label = int(input_label) + 1
-        #input_df['cluster'] = input_label
-        #input_df['ID'] = ids
+        input_label = pipeline.predict(input_df_scaled)
+        label = int(input_label) + 1
+        input_df['cluster'] = input_label
+        input_df['ID'] = ids
 
-        #st.write(f"O grupo ao qual o cliente pertence é: grupo {label}")
-        #texto_explicativo = descricao_clusters.get(cluster, "Descrição não disponível para este grupo.")
-        #st.markdown(f"Características do grupo {label}: ")
-        #st.write(texto_explicativo)
+        st.write(f"O grupo ao qual o cliente pertence é: grupo {label}")
+        texto_explicativo = descricao_clusters.get(cluster, "Descrição não disponível para este grupo.")
+        st.markdown(f"Características do grupo {label}: ")
+        st.write(texto_explicativo)
 
 
 elif menu == "Busque grupos por característica":
