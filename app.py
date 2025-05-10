@@ -19,7 +19,7 @@ def treat_columns(df, is_original=False):
   df = df[df['NumDealsPurchases'] < df['Num_purchases']]
   
   df['Purchases_with_descount'] = df['NumDealsPurchases']/df['Num_purchases']*100
-  df['Purchases_with_descount'] = df['Purchases_with_descount'].clip(upper=79)
+  df['Purchases_with_descount'] = df['Purchases_with_descount'].clip(lower=0.1, upper=79)
   
   bins = [0, 20, 40, 60, 80]
   labels = ['0-20', '20-40', '40-60', '60-80']
@@ -50,6 +50,7 @@ def treat_columns(df, is_original=False):
   today = df['Dt_Customer'].max()
   
   df['Is_client_since'] = (today - df['Dt_Customer']).dt.days
+  df['Is_client_since'] = df['Is_client_since'].clip(lower=0.1, upper=1099.99)
   bins = [0, 275, 550, 825, 1100]
   labels = ['0-275', '275-550', '550-825', '825-1100']
   df['Is_client_since'] = pd.cut(df['Is_client_since'], bins=bins, labels=labels, right=False)
@@ -65,7 +66,8 @@ def treat_columns(df, is_original=False):
   # Is the client recently buying or not
   bins = list(range(0, 101, 25))
   labels = [f"{i}-{i+25}" for i in bins[:-1]]
-  
+
+  df['Recency'] = df['Recency'].clip(lower=0.1, upper=99.99)
   df['Recency'] = pd.cut(df['Recency'], bins=bins, labels=labels, right=False)
   df['Is_buying'] = df['Recency'].replace({
       '0-25' : 0,
@@ -101,6 +103,7 @@ def treat_columns(df, is_original=False):
   df['Amount_spent_per_person'] = df['Amount_spent_per_person'].clip(upper=699.99)
   bins = [0, 175, 350, 525, 700]
   labels = ['0-175', '175-350', '350-525', '525-700']
+  
   df['Amount_spent_per_person'] = pd.cut(df['Amount_spent_per_person'], bins=bins, labels=labels, right=False)
   df['Amount_spent_per_person'] = df['Amount_spent_per_person'].replace({
       '0-175' : 0,
@@ -131,7 +134,7 @@ def treat_columns(df, is_original=False):
   df = df.drop(to_drop, axis=1)
 
   # Age from clients
-  df = df[df['Year_Birth'] >= 1900]
+  df['Year_Birth'] = df['Year_Birth'].clip(lower=1900, upper=2000)
   df = df.copy()
   
   bins = list(range(1900, 2001, 25))
