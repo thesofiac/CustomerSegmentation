@@ -249,7 +249,6 @@ if menu == "Entenda os dados":
 
     st.markdown("<div style='text-align: justify'><h5>Neste projeto, temos por agrupar os clientes de um supermercado, conforme seus padrões de compra, características familiares e de renda. Temos por objetivo selecionar, do banco de dados geral de clientes, aqueles com os quais determinadas estratégias de marketing e venda melhor funcionarão. Isso é de interesse geral em empresas já que, direcionar campanhas de marketing impróprias aos clientes leva a custos sem o retorno esperado. <br><br> Para alcançarmos esse objetivo, foi utilizado o método de clusterização kmeans, aplicando escalas maiores em features consideradas mais importantes para os objetos propostos. A metodologia aplicada permitiu que os dados, que eram inicialmente muito próximos uns dos outros no espaço n-dimensional, se agrupassem como resposta a maior escala das features selecionadas. <br><br></h5></div>", unsafe_allow_html=True)
     st.markdown("<div style='text-align: justify'><h5>Distribuição e agrupamento dos dados antes do tratamento: <br><br></h5></div>", unsafe_allow_html=True)
-    original_scaled
 
     # Métricas de avaliação
     silhouette = silhouette_score(original_treated.drop(columns=['cluster']), original_treated['cluster'])
