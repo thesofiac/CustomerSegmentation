@@ -363,7 +363,6 @@ elif menu == "Busque um cliente por ID":
 
         # Mostra a explicação
         texto_explicativo = descricao_clusters.get(cluster, "Descrição não disponível para este grupo.")
-        st.markdown(f"Características do cluster {cluster}: ")
         st.write(texto_explicativo)
 
     else:
