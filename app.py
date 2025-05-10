@@ -297,6 +297,32 @@ elif menu == "Preveja a qual grupo um cliente pertence":
         st.write(texto_explicativo)
 
 
+elif menu == "Busque grupos por característica":
+    # Título
+    st.subheader("Busque grupos por característica")
+
+    # Mapeamento de frases para clusters
+    descricao_para_clusters = {
+            "Clientes com crianças na família": [1, 2, 4, 5],
+            "Clientes que respondem bem a campanhas promocionais": [1, 3, 6, 7, 8],
+            "Clientes que preferem compras com desconto": [1, 2, 4, 5],
+            "Clientes que estão sem comprar há muito tempo": [2, 5, 6, 8],
+            "Clientes que bebem": [1, 2, 3, 4, 5, 6, 7, 8]
+            }
+
+    # Interface do Streamlit
+    opcao = st.selectbox("Escolha a característica do grupo:", list(descricao_para_clusters.keys()))
+
+    if opcao:
+        clusters_escolhidos = descricao_para_clusters[opcao]
+        resultados = original_scaled[original_scaled['cluster'].isin(clusters_escolhidos)]
+        lista = df['ID'].tolist()
+      
+        st.write(f"Grupos correspondentes: {clusters_escolhidos}")
+        st.write("IDs dos clientes encontrados:")
+        st.writ(lista)
+
+
 elif menu == "Busque um cliente por ID":
     # Título
     st.subheader("Busque um cliente por ID")
@@ -320,31 +346,6 @@ elif menu == "Busque um cliente por ID":
         st.warning("ID não encontrado no conjunto de dados.")
 
 
-elif menu == "Busque grupos por característica":
-    # Título
-    st.subheader("Busque grupos por característica")
-
-    # Mapeamento de frases para clusters
-    descricao_para_clusters = {
-            "Clientes com crianças na família": [1, 2, 4, 5],
-            "Clientes que respondem bem a campanhas promocionais": [1, 3, 6, 7, 8],
-            "Clientes que preferem compras com desconto": [1, 2, 4, 5],
-            "Clientes que estão sem comprar há muito tempo": [2, 5, 6, 8],
-            "Clientes que bebem": [1, 2, 3, 4, 5, 6, 7, 8]
-            }
-
-    # Interface do Streamlit
-    opcao = st.selectbox("Escolha a característica do grupo:", list(descricao_para_clusters.keys()))
-
-    if opcao:
-        clusters_escolhidos = descricao_para_clusters[opcao]
-        resultados = original_scaled[original_scaled['cluster'].isin(clusters_escolhidos)]
-
-        st.write(f"Clusters correspondentes: {clusters_escolhidos}")
-        st.write("IDs dos clientes encontrados:")
-        st.dataframe(resultados)
-
-
 elif menu == "Busque por um grupo":
     # Título
     st.subheader("Busque por um grupo")
@@ -357,6 +358,7 @@ elif menu == "Busque por um grupo":
       st.success(descricao_clusters[cluster_number])
     else:
       st.warning("Escolha um número entre 1 e 8.")
+
 
 elif menu == "Entenda a escolha do modelo":
     st.subheader("Entenda a escolha do modelo")
