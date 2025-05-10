@@ -252,7 +252,31 @@ if menu == "Entenda os dados":
     st.subheader("Entenda os dados")
     st.markdown("<br>", unsafe_allow_html=True)
 
-    st.markdown("<div style='text-align: justify'><h5>Neste projeto, temos por <p style='color:#A9DCFF;'>agrupar os clientes<\p> de um supermercado, conforme seus <p style='color:#A9DCFF;'>padrões de compra<\p>, <p style='color:#A9DCFF;'>características familiares<\p> e de <p style='color:#A9DCFF;'>renda<\p>. Temos por objetivo selecionar quais clientes são mais suscetíveis a responder positivamente a determinadas <p style='color:#A9DCFF;'>estratégias de marketing<\p> e <p style='color:#A9DCFF;'>venda<\p>. Isso é de interesse geral em empresas já que, <p style='color:#A9DCFF;'>direcionar campanhas de marketing impróprias<\p> aos clientes <p style='color:#A9DCFF;'>leva a custos sem o retorno<\p> esperado. <br><br> Para alcançarmos esse objetivo, foi utilizado o método de clusterização kmeans, aplicando escalas maiores em features consideradas mais importantes para os objetos propostos. A metodologia aplicada permitiu que os dados, que eram inicialmente muito próximos uns dos outros no espaço n-dimensional, se agrupassem como resposta a maior escala das features selecionadas. <br><br></h5></div>", unsafe_allow_html=True)
+    st.markdown("""
+    <div style='text-align: justify'>
+      <h5>
+        Neste projeto, temos por 
+        <span style='color:#69C1FF;'>agrupar os clientes</span> de um supermercado, conforme seus 
+        <span style='color:#69C1FF;'>padrões de compra</span>, 
+        <span style='color:#69C1FF;'>características familiares</span> e de 
+        <span style='color:#69C1FF;'>renda</span>. Temos por objetivo selecionar quais clientes são mais suscetíveis a responder positivamente a determinadas 
+        <span style='color:#69C1FF;'>estratégias de marketing</span> e 
+        <span style='color:#69C1FF;'>venda</span>. Isso é de interesse geral em empresas já que, 
+        <span style='color:#69C1FF;'>direcionar campanhas de marketing impróprias</span> aos clientes 
+        <span style='color:#69C1FF;'>leva a custos sem o retorno</span> esperado.
+        <br><br>
+        Para alcançarmos esse objetivo, foi utilizado o método de clusterização kmeans, aplicando escalas maiores em features consideradas mais importantes para os objetos propostos. A metodologia aplicada permitiu que os dados, que eram inicialmente muito próximos uns dos outros no espaço n-dimensional, se agrupassem como resposta a maior escala das features selecionadas.
+        <br><br>
+      </h5>
+    </div>
+    """, unsafe_allow_html=True)
+
+st.markdown("""
+<div style='text-align: justify'>
+    <h5>Distribuição e agrupamento dos dados antes do tratamento: <br><br></h5>
+</div>
+""", unsafe_allow_html=True)
+
     st.markdown("<div style='text-align: justify'><h5>Distribuição e agrupamento dos dados antes do tratamento: <br><br></h5></div>", unsafe_allow_html=True)
 
     # Métricas
