@@ -270,7 +270,7 @@ if menu == "Entenda os dados":
       color=treated_labels,
       title="Visualização dos Clusters com PCA (3D)",
       opacity=0.7,
-      color_discrete_sequence=px.colors.qualitative.Bold
+      color_discrete_sequence=px.colors.qualitative.Prism
     )
 
     st.plotly_chart(fig)
@@ -292,7 +292,7 @@ if menu == "Entenda os dados":
       color=original_labels,
       title="Visualização dos Clusters com PCA (3D)",
       opacity=0.7,
-      color_discrete_sequence=px.colors.qualitative.Bold
+      color_discrete_sequence=px.colors.qualitative.Prism
     )
 
     st.plotly_chart(fig)
