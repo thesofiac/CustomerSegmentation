@@ -242,6 +242,19 @@ if menu == "Entenda os dados":
 
     st.markdown("<div style='text-align: justify'><h5>Neste projeto, temos por objetivo determinar se um candidato a uma vaga de cientista de dados será propenso a trocar de emprego após realizar o treinamento oferecido pela empresa ou não. Como é do interesse das empresas evitar a contratação de candidatos que as deixarão após o treinamento, podemos tratar esse problema como um caso de Classificação Binária. Ou seja, um caso em que o <i>target</i> é classificatório e binário do tipo False (não deixará a empresa) e True (deixará a empresa). Para que seja determinada a probabilidade do candidato estar interessado em mudar de emprego, foram analisados dados de gênero, formação e experiência profissional, assim como dados das vagas e empresas que estes profissionais ocupavam no momento da coleta de dados.</h5></div>", unsafe_allow_html=True)
 
+elif menu == "Busque os dados de um grupo":
+    # Título
+    st.subheader("Busque os dados de um grupo")
+
+    # Entrada do usuário
+    cluster_number = st.number_input("Digite um número de 1 a 8:", min_value=1, max_value=8, step=1)
+    
+    # Mostrar resultado
+    if cluster_number in descricao_clusters:
+      st.success(descricao_clusters[cluster_number])
+    else:
+      st.warning("Escolha um número entre 1 e 8.")
+      
 elif menu == "Preveja a qual grupo um cliente pertence":
     st.subheader("Preveja a qual grupo um cliente pertence")
 
@@ -349,20 +362,6 @@ elif menu == "Busque um cliente por ID":
 
     else:
         st.warning("ID não encontrado no conjunto de dados.")
-
-
-elif menu == "Busque por um grupo":
-    # Título
-    st.subheader("Busque por um grupo")
-
-    # Entrada do usuário
-    cluster_number = st.number_input("Digite um número de 1 a 8:", min_value=1, max_value=8, step=1)
-    
-    # Mostrar resultado
-    if cluster_number in descricao_clusters:
-      st.success(descricao_clusters[cluster_number])
-    else:
-      st.warning("Escolha um número entre 1 e 8.")
 
 
 elif menu == "Entenda a escolha do modelo":
