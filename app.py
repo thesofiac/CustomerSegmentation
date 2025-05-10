@@ -263,11 +263,11 @@ if menu == "Entenda os dados":
     st.write(f"Davies-Bouldin Score: {davies:.4f}")
   
     # Visualizar clusters com PCA em 3D
-    df_pca_3d = PCA(n_components=3).fit_transform(df_antes)
+    df_pca_3d = PCA(n_components=3).fit_transform(original_df)
     fig = px.scatter_3d(
       df_pca_3d,
       x=0, y=1, z=2,
-      color=treated_labels,
+      color=2,
       title="Visualização dos Clusters com PCA (3D)",
       opacity=0.7,
       color_discrete_sequence=px.colors.qualitative.Prism
