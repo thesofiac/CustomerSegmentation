@@ -219,7 +219,7 @@ dic_scholarity = {
         'Doutorado' : 'PhD'
         }
 
-dic_marital_status = {
+dic_marital = {
         'Solteiro' : 'Single',
         'Casado' : 'Married',
         'Divorciado' : 'Divorced',
@@ -232,7 +232,7 @@ dic_binary = {
         }
 
 scholarity_options = list(dic_scholarity.keys())
-marital_options = list(dic_marital_status.keys())
+marital_options = list(dic_marital.keys())
 binary_options = list(dic_binary.keys())
 
 
