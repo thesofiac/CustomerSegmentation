@@ -358,11 +358,11 @@ elif menu == "Busque um cliente por ID":
     id_cliente = st.number_input("Digite o ID do cliente:", min_value=0, step=1)
 
     if id_cliente in original_scaled['ID'].values:
-        cluster = df_final[original_scaled['ID'] == id_cliente]['cluster'].iloc[0]
+        cluster = original_scaled[original_scaled['ID'] == id_cliente]['cluster'].iloc[0]
         st.success(f"O cliente {id_cliente} pertence ao cluster {cluster}")
 
         # Mostra a explicação
-        texto_explicativo = descricao_clusters.get(cluster, "Descrição não disponível para este cluster.")
+        texto_explicativo = descricao_clusters.get(cluster, "Descrição não disponível para este grupo.")
         st.markdown(f"Características do cluster {cluster}: ")
         st.write(texto_explicativo)
 
