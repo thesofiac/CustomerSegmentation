@@ -281,14 +281,7 @@ if menu == "Entenda os dados":
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("<div style='text-align: justify'><h5>Distribuição e agrupamento dos dados antes do tratamento: <br><br></h5></div>", unsafe_allow_html=True)
-
-    # Métricas
-    silhouette = silhouette_score(df_antes, treated_labels)
-    davies = davies_bouldin_score(df_antes, treated_labels)
-    st.write(f"Métricas para k = 8")
-    st.write(f"Silhouette Score: {silhouette:.4f}")
-    st.write(f"Davies-Bouldin Score: {davies:.4f}")
+    st.markdown("<div style='text-align: justify'><h5>Distribuição e agrupamento dos dados <span style='color:#E57373;'>antes</span> do tratamento: <br><br></h5></div>", unsafe_allow_html=True)
   
     # Visualizar clusters com PCA em 3D
     df_pca_3d = PCA(n_components=3).fit_transform(df_antes)
@@ -303,14 +296,7 @@ if menu == "Entenda os dados":
 
     st.plotly_chart(fig)
   
-    st.markdown("<div style='text-align: justify'><h5>Distribuição e agrupamento dos dados após tratamento: <br><br></h5></div>", unsafe_allow_html=True)
-
-    # Métricas
-    silhouette = silhouette_score(df_depois, original_labels)
-    davies = davies_bouldin_score(df_depois, original_labels)
-    st.write(f"Métricas para k = 8")
-    st.write(f"Silhouette Score: {silhouette:.4f}")
-    st.write(f"Davies-Bouldin Score: {davies:.4f}")
+    st.markdown("<div style='text-align: justify'><h5>Distribuição e agrupamento dos dados <span style='color:#E57373;'>após</span> tratamento: <br><br></h5></div>", unsafe_allow_html=True)
   
     # Visualizar clusters com PCA em 3D
     df_pca_3d = PCA(n_components=3).fit_transform(df_depois)
