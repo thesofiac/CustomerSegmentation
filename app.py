@@ -259,27 +259,27 @@ elif menu == "Preveja a qual grupo um cliente pertence":
     st.subheader("Preveja a qual grupo um cliente pertence")
 
     f1 = '0'  # ID
-    f2 = st.number_input("Ano de Nascimento", min_value=0, step=1)  # Birth
+    f2 = st.number_input("Ano de Nascimento", min_value=0, value=0, step=1)  # Birth
     f3 = st.selectbox("Escolaridade", scholarity_options)  # Escolaridade
     f4 = st.selectbox("Estado Civil", marital_options)  # Estado civil
-    f5 = st.number_input("Renda Familiar", min_value=0, value=0.0)  # Renda
-    f6 = st.number_input("Número de Crianças na Família", min_value=0, step=1)  # Nº de crianças
-    f7 = st.number_input("Número de Adolescentes na Família", min_value=0, step=1)  # Nº de adolescentes
+    f5 = st.number_input("Renda Familiar", min_value=0, value=0, step=1)  # Renda
+    f6 = st.number_input("Número de Crianças na Família", min_value=0, value=0, step=1)  # Nº de crianças
+    f7 = st.number_input("Número de Adolescentes na Família", min_value=0, value=0, step=1)  # Nº de adolescentes
 
     f8 = st.text_input("Digite a data da primeira compra do cliente (DD-MM-YYYY)")  # Primeira compra
     f9 = st.number_input("Dias desde sua última compra", min_value=0, step=1)  # Dias desde sua última compra
 
-    f10 = st.number_input("Gastos com bebida alcoolica", min_value=0, value=0.0)  # Bebidas
-    f11 = st.number_input("Gastos com frutas", min_value=0, value=0.0)  # Frutas
-    f12 = st.number_input("Gastos com carnes", min_value=0, value=0.0)  # Carnes
-    f13 = st.number_input("Gastos com peixes", min_value=0, value=0.0)  # Peixes
-    f14 = st.number_input("Gastos com doces", min_value=0, value=0.0)  # Doces
-    f15 = st.number_input("Gastos com joias", min_value=0, value=0.0)  # Joias
+    f10 = st.number_input("Gastos com bebida alcoolica", min_value=0, value=0, step=1)  # Bebidas
+    f11 = st.number_input("Gastos com frutas", min_value=0, value=0, step=1)  # Frutas
+    f12 = st.number_input("Gastos com carnes", min_value=0, value=0, step=1)  # Carnes
+    f13 = st.number_input("Gastos com peixes", min_value=0, value=0, step=1)  # Peixes
+    f14 = st.number_input("Gastos com doces", min_value=0, value=0, step=1)  # Doces
+    f15 = st.number_input("Gastos com joias", min_value=0, value=0, step=1)  # Joias
 
-    f16 = st.number_input("Número de compras com descontos", min_value=0, step=1)  # Descontos
-    f17 = st.number_input("Número de compras realizadas no site", min_value=0, step=1)  # Web
-    f18 = st.number_input("Número de compras realizadas pelo catálogo", min_value=0, step=1)  # Catálogo
-    f19 = st.number_input("Número de compras realizadas na loja física", min_value=0, step=1)  # Loja física
+    f16 = st.number_input("Número de compras com descontos", min_value=0, value=0, step=1)  # Descontos
+    f17 = st.number_input("Número de compras realizadas no site", min_value=0, value=0, step=1)  # Web
+    f18 = st.number_input("Número de compras realizadas pelo catálogo", min_value=0, value=0, step=1)  # Catálogo
+    f19 = st.number_input("Número de compras realizadas na loja física", min_value=0, value=0, step=1)  # Loja física
     f20 = st.number_input("Número visitas realizadas ao site", min_value=0, step=1)  # Visitas
 
     f21 = st.selectbox("Realizou compras durante a primeira campanha?", binary_options)  # Campanha 1
